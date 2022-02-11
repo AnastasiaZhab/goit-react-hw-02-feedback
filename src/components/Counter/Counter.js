@@ -1,5 +1,7 @@
 import { Component } from "react/cjs/react.production.min";
 import s from "./Counter.module.css";
+import Feedback from "./Feedback/Feedback";
+import Statistics from "./Statistics/Statistics";
 
 class Counter extends Component {
   state = {
@@ -9,52 +11,36 @@ class Counter extends Component {
   };
 
   handleIncrementGood = () => {
-    this.setState((prevState) => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
+    this.setState((prevState) => ({
+      good: prevState.good + 1,
+    }));
   };
 
   handleIncrementNeutral = () => {
-    this.setState((prevState) => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
+    this.setState((prevState) => ({
+      neutral: prevState.neutral + 1,
+    }));
   };
 
   handleIncrementBad = () => {
-    this.setState((prevState) => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
+    this.setState((prevState) => ({
+      bad: prevState.bad + 1,
+    }));
   };
 
   render() {
     return (
       <div className={s.counter}>
-        <div className="feedback">
-          <h3>Please leave feedback</h3>
-
-          <button type="button" onClick={this.handleIncrementGood}>
-            Good
-          </button>
-          <button type="button" onClick={this.handleIncrementNeutral}>
-            Neutral
-          </button>
-          <button type="button" onClick={this.handleIncrementBad}>
-            Bad
-          </button>
-        </div>
-
-        <div className={s.statistics}>
-          <h3>Statistics</h3>
-          <span>Good: {this.state.good}</span>
-          <span>Neutral: {this.state.neutral}</span>
-          <span>Bad: {this.state.bad}</span>
-        </div>
+        <Feedback
+          onIncrementGood={this.handleIncrementGood}
+          onIncrementNeutral={this.handleIncrementNeutral}
+          onIncrementBad={this.handleIncrementBad}
+        />
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+        />
       </div>
     );
   }
