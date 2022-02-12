@@ -56,7 +56,7 @@ class App extends Component {
           />
         </Section>
 
-        {this.state.total === 0 ? (
+        {this.state.total > 0 ? (
           <Section title="Statistics">
             <Statistics
               good={this.state.good}
