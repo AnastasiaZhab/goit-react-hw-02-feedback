@@ -3,6 +3,7 @@ const Feedback = ({
   onIncrementNeutral,
   onIncrementBad,
   onTotal,
+  posFeed,
 }) => {
   return (
     <div className="feedback">
@@ -13,6 +14,7 @@ const Feedback = ({
         onClick={() => {
           onIncrementGood();
           onTotal();
+          posFeed();
         }}
       >
         Good
@@ -22,6 +24,7 @@ const Feedback = ({
         onClick={() => {
           onIncrementNeutral();
           onTotal();
+          posFeed();
         }}
       >
         Neutral
@@ -31,6 +34,7 @@ const Feedback = ({
         onClick={() => {
           onIncrementBad();
           onTotal();
+          posFeed();
         }}
       >
         Bad

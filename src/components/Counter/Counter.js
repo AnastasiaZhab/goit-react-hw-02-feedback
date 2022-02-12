@@ -9,6 +9,7 @@ class Counter extends Component {
     neutral: 0,
     bad: 0,
     total: 0,
+    positiveFeed: 0,
   };
 
   handleIncrementGood = () => {
@@ -34,7 +35,11 @@ class Counter extends Component {
       total: prevState.total + 1,
     }));
   };
-  countPositiveFeedbackPercentage() {}
+  countPositiveFeedbackPercentage = () => {
+    this.setState((prevState) => ({
+      positiveFeed: (100 / prevState.total) * prevState.good,
+    }));
+  };
 
   render() {
     return (
@@ -44,12 +49,14 @@ class Counter extends Component {
           onIncrementNeutral={this.handleIncrementNeutral}
           onIncrementBad={this.handleIncrementBad}
           onTotal={this.countTotalFeedback}
+          posFeed={this.countPositiveFeedbackPercentage}
         />
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
           total={this.state.total}
+          positiveFeed={this.state.positiveFeed}
         />
       </div>
     );
