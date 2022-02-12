@@ -1,6 +1,6 @@
 import s from "./Statistics.module.css";
 
-const Statistics = ({ good, neutral, bad, total, positiveFeed }) => {
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <div className={s.statistics}>
       <h3>Statistics</h3>
@@ -8,7 +8,7 @@ const Statistics = ({ good, neutral, bad, total, positiveFeed }) => {
       <span>Neutral: {neutral}</span>
       <span>Bad: {bad}</span>
       <span>Total: {total}</span>
-      <span>Positive feedback: {Math.round(positiveFeed)} %</span>
+      <span>Positive feedback: {Math.round(positivePercentage)} %</span>
     </div>
   );
 };
