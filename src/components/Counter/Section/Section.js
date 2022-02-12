@@ -1,9 +1,9 @@
-import "./Section.module.css";
+import s from "./Section.module.css";
 
 const Section = ({ title, children }) => {
   return (
-    <div className="section">
-      <h3>{title}</h3>
+    <div className={s.section}>
+      <h3 className={s.title}>{title}</h3>
       {children}
     </div>
   );

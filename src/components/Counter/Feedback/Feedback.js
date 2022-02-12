@@ -1,3 +1,5 @@
+import s from "./Feedback.module.css";
+
 const Feedback = ({
   onIncrementGood,
   onIncrementNeutral,
@@ -6,9 +8,10 @@ const Feedback = ({
   posFeed,
 }) => {
   return (
-    <div className="feedback">
+    <div className={s.div}>
       <button
         type="button"
+        className={s.button}
         onClick={() => {
           onIncrementGood();
           onTotal();
@@ -19,6 +22,7 @@ const Feedback = ({
       </button>
       <button
         type="button"
+        className={s.button}
         onClick={() => {
           onIncrementNeutral();
           onTotal();
@@ -29,6 +33,7 @@ const Feedback = ({
       </button>
       <button
         type="button"
+        className={s.button}
         onClick={() => {
           onIncrementBad();
           onTotal();
