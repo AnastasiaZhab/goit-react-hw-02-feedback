@@ -8,6 +8,7 @@ class Counter extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    total: 0,
   };
 
   handleIncrementGood = () => {
@@ -28,6 +29,13 @@ class Counter extends Component {
     }));
   };
 
+  countTotalFeedback = () => {
+    this.setState((prevState) => ({
+      total: prevState.total + 1,
+    }));
+  };
+  countPositiveFeedbackPercentage() {}
+
   render() {
     return (
       <div className={s.counter}>
@@ -35,11 +43,13 @@ class Counter extends Component {
           onIncrementGood={this.handleIncrementGood}
           onIncrementNeutral={this.handleIncrementNeutral}
           onIncrementBad={this.handleIncrementBad}
+          onTotal={this.countTotalFeedback}
         />
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
+          total={this.state.total}
         />
       </div>
     );

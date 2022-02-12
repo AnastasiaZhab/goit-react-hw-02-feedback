@@ -1,15 +1,38 @@
-const Feedback = ({ onIncrementGood, onIncrementNeutral, onIncrementBad }) => {
+const Feedback = ({
+  onIncrementGood,
+  onIncrementNeutral,
+  onIncrementBad,
+  onTotal,
+}) => {
   return (
     <div className="feedback">
       <h3>Please leave feedback</h3>
 
-      <button type="button" onClick={onIncrementGood}>
+      <button
+        type="button"
+        onClick={() => {
+          onIncrementGood();
+          onTotal();
+        }}
+      >
         Good
       </button>
-      <button type="button" onClick={onIncrementNeutral}>
+      <button
+        type="button"
+        onClick={() => {
+          onIncrementNeutral();
+          onTotal();
+        }}
+      >
         Neutral
       </button>
-      <button type="button" onClick={onIncrementBad}>
+      <button
+        type="button"
+        onClick={() => {
+          onIncrementBad();
+          onTotal();
+        }}
+      >
         Bad
       </button>
     </div>
