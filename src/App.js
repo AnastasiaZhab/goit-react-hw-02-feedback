@@ -44,22 +44,26 @@ class App extends Component {
 
   render() {
     return (
-      <Section children={(Feedback, Statistics)}>
-        <Feedback
-          onIncrementGood={this.handleIncrementGood}
-          onIncrementNeutral={this.handleIncrementNeutral}
-          onIncrementBad={this.handleIncrementBad}
-          onTotal={this.countTotalFeedback}
-          posFeed={this.countPositiveFeedbackPercentage}
-        />
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.state.total}
-          positivePercentage={this.state.positivePercentage}
-        />
-      </Section>
+      <div>
+        <Section title="Please leave feedback">
+          <Feedback
+            onIncrementGood={this.handleIncrementGood}
+            onIncrementNeutral={this.handleIncrementNeutral}
+            onIncrementBad={this.handleIncrementBad}
+            onTotal={this.countTotalFeedback}
+            posFeed={this.countPositiveFeedbackPercentage}
+          />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.state.total}
+            positivePercentage={this.state.positivePercentage}
+          />
+        </Section>
+      </div>
     );
   }
 }

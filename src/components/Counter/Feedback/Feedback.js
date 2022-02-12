@@ -7,8 +7,6 @@ const Feedback = ({
 }) => {
   return (
     <div className="feedback">
-      <h3>Please leave feedback</h3>
-
       <button
         type="button"
         onClick={() => {
