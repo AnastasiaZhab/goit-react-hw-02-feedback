@@ -1,6 +1,6 @@
 import { Component } from "react/cjs/react.production.min";
 import "./App.css";
-import Feedback from "./components/Counter/Feedback/Feedback";
+import FeedbackOptions from "./components/Counter/FeedbackOptions/FeedbackOptions";
 import Statistics from "./components/Counter/Statistics/Statistics";
 import Section from "./components/Counter/Section/Section";
 import Notification from "./components/Counter/Notification/Notification";
@@ -12,24 +12,6 @@ class App extends Component {
     bad: 0,
   };
 
-  handleIncrementGood = () => {
-    this.setState((prevState) => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  handleIncrementNeutral = () => {
-    this.setState((prevState) => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  handleIncrementBad = () => {
-    this.setState((prevState) => ({
-      bad: prevState.bad + 1,
-    }));
-  };
-
   countTotalFeedback = () => {
     return Object.values(this.state).reduce((acc, item) => (acc += item), 0);
   };
@@ -38,18 +20,21 @@ class App extends Component {
     return (100 / this.countTotalFeedback()) * this.state.good;
   };
 
+  onLeaveFeedback = (event) => {
+    const name = event.currentTarget.innerText;
+    return this.setState({ [name]: this.state[name] + 1 });
+  };
+
   render() {
+    const options = Object.keys(this.state);
     const total = this.countTotalFeedback();
     const percentage = this.countPositiveFeedbackPercentage();
     return (
       <div>
         <Section title="Please leave feedback">
-          <Feedback
-            onIncrementGood={this.handleIncrementGood}
-            onIncrementNeutral={this.handleIncrementNeutral}
-            onIncrementBad={this.handleIncrementBad}
-            onTotal={this.countTotalFeedback}
-            posFeed={this.countPositiveFeedbackPercentage}
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
 
